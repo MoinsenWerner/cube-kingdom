@@ -12,6 +12,8 @@ from services import (
 from licenses_api import router as license_router
 import sqlite3
 from filemanager import router as filemanager_router
+import os
+from typing import Optional
 
 app = FastAPI()
 router = APIRouter()
@@ -98,7 +100,7 @@ class CreateServerRequest(BaseModel):
     name: str
     ram_mb: int
     jar_path: str = "/var/www/html/ck-website/server.jar"
-    rcon_password: str | None = ""
+    rcon_password: Optional[str] = ""
 
 
 @app.post("/create")
