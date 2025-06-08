@@ -2,7 +2,13 @@ from fastapi import APIRouter, FastAPI, Request, HTTPException, Depends, Header,
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from auth import verify_license
-from services import list_services, control_service, get_logs, list_server_names
+from services import (
+    list_services,
+    control_service,
+    get_logs,
+    list_server_names,
+    create_server,
+)
 from licenses_api import router as license_router
 import sqlite3
 from filemanager import router as filemanager_router
@@ -86,3 +92,15 @@ def delete_files(data: DeleteRequest, api_key: str = Depends(verify_license)):
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Fehler beim Löschen: {rel}: {str(e)}")
     return {"deleted": deleted}
+
+
+class CreateServerRequest(BaseModel):
+    name: str
+    ram_mb: int
+    jar_path: str = "/var/www/html/ck-website/server.jar"
+    rcon_password: str | None = ""
+
+
+@app.post("/create")
+def create_server_endpoint(data: CreateServerRequest, api_key: str = Depends(verify_license)):
+    return create_server(data.name, data.ram_mb, data.jar_path, data.rcon_password or "")

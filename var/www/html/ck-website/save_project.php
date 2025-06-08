@@ -37,6 +37,23 @@ if ($result === FALSE) {
 }
 
 $response = json_decode($result, true);
+
+// Nach erfolgreichem Speichern den Server automatisch erstellen
+$serverpanel_url = "http://localhost:8001/create";
+$server_data = [
+    "name" => $project_name,
+    "ram_mb" => $ram * 1024,
+    "jar_path" => "/var/www/html/ck-website/server.jar"
+];
+$sp_options = [
+    'http' => [
+        'header'  => "Content-Type: application/json\r\nx-api-key: h2r-admin0709-reload9383\r\n",
+        'method'  => 'POST',
+        'content' => json_encode($server_data),
+    ],
+];
+$sp_context = stream_context_create($sp_options);
+@file_get_contents($serverpanel_url, false, $sp_context);
 ?>
 
 <h1>Projekt gespeichert!</h1>

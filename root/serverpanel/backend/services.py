@@ -3,6 +3,7 @@ import psutil
 import re
 import socket
 import struct
+import os
 from mcrcon import MCRcon
 
 def read_port_mapping(path="/etc/mc-ports.txt"):
@@ -187,3 +188,14 @@ def get_player_count_rcon(host, port, password):
                 return int(match.group(1))
     except:
         return None
+
+
+def create_server(name, ram_mb, jar_path="/var/www/html/ck-website/server.jar", rcon_password=""):
+    """Create a new Minecraft server using the install script."""
+    cmd = ["/root/serverpanel/install_minecraft_server.sh"]
+    input_data = f"{name}\n{ram_mb}\n{jar_path}\n{rcon_password}\n"
+    try:
+        subprocess.run(cmd, input=input_data, text=True, check=True)
+        return {"success": True}
+    except subprocess.CalledProcessError as e:
+        return {"success": False, "error": e.stderr}
