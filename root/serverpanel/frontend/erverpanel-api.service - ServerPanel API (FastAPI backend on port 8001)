@@ -1,0 +1,6 @@
+● serverpanel-api.service - ServerPanel API (FastAPI backend on port 8001)
+     Loaded: loaded (/etc/systemd/system/serverpanel-api.service; disabled; vendor preset: enabled)
+     Active: activating (auto-restart) (Result: exit-code) since Fri 2025-05-09 02:57:12 CEST; 342ms ago
+    Process: 157612 ExecStart=/usr/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8001 [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 157612 (code=exited, status=1/FAILURE)
+        CPU: 501ms

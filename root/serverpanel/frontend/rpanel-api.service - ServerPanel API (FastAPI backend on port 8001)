@@ -1,0 +1,20 @@
+[0;1;32m●[0m serverpanel-api.service - ServerPanel API (FastAPI backend on port 8001)
+     Loaded: loaded (/etc/systemd/system/serverpanel-api.service; disabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Fri 2025-05-09 00:29:53 CEST; 26s ago
+   Main PID: 134362 (python3)
+      Tasks: 2 (limit: 28784)
+     Memory: 30.3M
+        CPU: 529ms
+     CGroup: /system.slice/serverpanel-api.service
+             └─134362 /usr/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8001
+
+May 09 00:30:16 kvm7620 python3[134362]:     return await anyio.to_thread.run_sync(func)
+May 09 00:30:16 kvm7620 python3[134362]:   File "/usr/local/lib/python3.9/dist-packages/anyio/to_thread.py", line 56, in run_sync
+May 09 00:30:16 kvm7620 python3[134362]:     return await get_async_backend().run_sync_in_worker_thread(
+May 09 00:30:16 kvm7620 python3[134362]:   File "/usr/local/lib/python3.9/dist-packages/anyio/_backends/_asyncio.py", line 2470, in run_sync_in_worker_thread
+May 09 00:30:16 kvm7620 python3[134362]:     return await future
+May 09 00:30:16 kvm7620 python3[134362]:   File "/usr/local/lib/python3.9/dist-packages/anyio/_backends/_asyncio.py", line 967, in run
+May 09 00:30:16 kvm7620 python3[134362]:     result = context.run(func, *args)
+May 09 00:30:16 kvm7620 python3[134362]:   File "/root/serverpanel/backend/main.py", line 32, in get_license_info
+May 09 00:30:16 kvm7620 python3[134362]:     conn = sqlite3.connect("backend/database.sqlite")
+May 09 00:30:16 kvm7620 python3[134362]: sqlite3.OperationalError: unable to open database file

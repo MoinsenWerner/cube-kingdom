@@ -1,0 +1,14 @@
+[0;1;31m●[0m minecraft@server1.service - Minecraft Server server1
+     Loaded: loaded (/etc/systemd/system/minecraft@server1.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Thu 2025-05-08 19:52:30 CEST; 357ms ago
+    Process: 75781 ExecStart=/usr/bin/java -Xmx1024M -Xms10240M -jar purpur-1.21.4.jar nogui [0;1;31m(code=exited, status=217/USER)[0m
+   Main PID: 75781 (code=exited, status=217/USER)
+        CPU: 3ms
+
+May 08 19:52:30 kvm7620 systemd[1]: [0;1;39m[0;1;31m[0;1;39mminecraft@server1.service: Main process exited, code=exited, status=217/USER[0m
+May 08 19:52:30 kvm7620 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mminecraft@server1.service: Failed with result 'exit-code'.[0m
+May 08 19:52:30 kvm7620 systemd[1]: minecraft@server1.service: Scheduled restart job, restart counter is at 5.
+May 08 19:52:30 kvm7620 systemd[1]: Stopped Minecraft Server server1.
+May 08 19:52:30 kvm7620 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mminecraft@server1.service: Start request repeated too quickly.[0m
+May 08 19:52:30 kvm7620 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mminecraft@server1.service: Failed with result 'exit-code'.[0m
+May 08 19:52:30 kvm7620 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start Minecraft Server server1.[0m
